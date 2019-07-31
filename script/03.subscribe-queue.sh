@@ -6,4 +6,5 @@ URL=`cat tmp/rekog_queue_url_output.json | jq -r '.QueueUrl'`
 
 aws sns subscribe --topic-arn $TOPICARN --protocol sqs --notification-endpoint $QUEUEARN > tmp/rekog_subscription_output.json
 
-aws sqs add-permission --queue-url $URL --label SendMessagesFromRekogQueue --aws-account-ids $AWS_ACCOUNT --actions SendMessage
+sed -e "s%\${AWS::Region}%$AWS_REGION%" -e "s%\${AWS::AccountId}%$AWS_ACCOUNT%" config/rekog_sqs_policy_template.json  > tmp/rekog_sqs_policy.json
+aws sqs set-queue-attributes --queue-url $URL --attributes file://tmp/rekog_sqs_policy.json

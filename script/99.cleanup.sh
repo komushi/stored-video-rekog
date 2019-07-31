@@ -14,5 +14,5 @@ aws sns delete-topic --topic-arn $TOPICARN
 aws rekognition delete-collection --collection-id video-rekog-demo
 
 aws s3 rm s3://video-rekog/pic.png
-aws s3 rm s3://video-rekog/test.mov
+aws s3 rm s3://video-rekog/test.mp4
 aws s3api delete-bucket --bucket video-rekog

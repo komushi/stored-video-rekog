@@ -1,0 +1,3 @@
+{
+  "Policy": "{\"Version\":\"2012-10-17\",\"Id\":\"ID01\",\"Statement\":[{\"Sid\":\"SID01\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"SQS:SendMessage\",\"Resource\":\"arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:RekogStatusQueue\"}]}"
+}
